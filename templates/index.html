@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SummaBrowse - AI Content Summarization</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <h1>SummaBrowse</h1>
+            </div>
+            
+            <nav class="main-nav">
+                <button class="nav-btn active" data-target="pdf-section">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>PDF Summary</span>
+                </button>
+                <button class="nav-btn" data-target="image-section">
+                    <i class="fas fa-image"></i>
+                    <span>Image to Text</span>
+                </button>
+                <button class="nav-btn" data-target="video-section">
+                    <i class="fas fa-video"></i>
+                    <span>Video Summary</span>
+                </button>
+            </nav>
+            
+            <div class="app-info">
+                <p>AI-powered content summarization</p>
+                <p class="version">v1.0.0</p>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <h2 id="section-title">PDF Summarization</h2>
+                <div class="user-actions">
+                    <button class="btn-icon" title="Settings">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <button class="btn-icon" title="Help">
+                        <i class="fas fa-question-circle"></i>
+                    </button>
+                </div>
+            </header>
+            
+            <!-- PDF Section -->
+            <section id="pdf-section" class="content-section active">
+                <div class="upload-card">
+                    <div class="upload-area" id="pdf-upload">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Upload PDF File</h3>
+                        <p>Drag & drop your PDF here or click to browse</p>
+                        <p class="file-info">Supports .pdf (Max 25MB)</p>
+                        <input type="file" id="pdf-file" accept=".pdf" hidden>
+                    </div>
+                    <button id="process-pdf" class="btn-primary">
+                        <i class="fas fa-magic"></i> Generate Summary
+                    </button>
+                </div>
+                
+                <div class="results-container" id="pdf-results">
+                    <!-- Results will be displayed here -->
+                </div>
+            </section>
+            
+            <!-- Image Section -->
+            <section id="image-section" class="content-section">
+                <div class="upload-card">
+                    <div class="upload-area" id="image-upload">
+                        <i class="fas fa-image"></i>
+                        <h3>Upload Image</h3>
+                        <p>Drag & drop your image here or click to browse</p>
+                        <p class="file-info">Supports .jpg, .jpeg, .png (Max 10MB)</p>
+                        <input type="file" id="image-file" accept="image/*" hidden>
+                    </div>
+                    <button id="process-image" class="btn-primary">
+                        <i class="fas fa-magic"></i> Extract Text
+                    </button>
+                </div>
+                
+                <div class="results-container" id="image-results">
+                    <!-- Results will be displayed here -->
+                </div>
+            </section>
+            
+            <!-- Video Section -->
+            <section id="video-section" class="content-section">
+                <div class="upload-card">
+                    <div class="input-group">
+                        <label for="video-url">YouTube Video URL</label>
+                        <div class="input-with-icon">
+                            <i class="fab fa-youtube"></i>
+                            <input type="text" id="video-url" class="input-field" 
+                                   placeholder="https://www.youtube.com/watch?v=...">
+                        </div>
+                    </div>
+                    <button id="process-video" class="btn-primary">
+                        <i class="fas fa-magic"></i> Summarize Video
+                    </button>
+                </div>
+                
+                <div class="results-container" id="video-results">
+                    <!-- Results will be displayed here -->
+                </div>
+            </section>
+            
+            <!-- Loading Overlay -->
+            <div class="loading-overlay" id="loading-overlay">
+                <div class="spinner"></div>
+                <p>Processing your request...</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

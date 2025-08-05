@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: summabrowse
+    env: docker
+    plan: free
+    healthCheckPath: /healthz
+    dockerfilePath: ./Dockerfile
